@@ -14,11 +14,16 @@ const timetableRoutes = require('./routes/timetable.cjs');
 const generateRoutes = require('./routes/generate.cjs');
 
 app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
+
 app.use('/api/timetables', timetableRoutes);
+app.use('/timetables', timetableRoutes);
+
 app.use('/api/generate', generateRoutes);
+app.use('/generate', generateRoutes);
 
 // Health check
-app.get('/api/health', (req, res) => {
+app.get(['/api/health', '/health'], (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
