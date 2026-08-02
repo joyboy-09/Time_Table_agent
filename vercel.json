@@ -1,10 +1,5 @@
 {
   "version": 2,
-  "functions": {
-    "api/index.cjs": {
-      "includeFiles": "server/**"
-    }
-  },
   "rewrites": [
     {
       "source": "/api/:path*",
