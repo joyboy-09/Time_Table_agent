@@ -3,7 +3,9 @@ const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
 
-const DATA_DIR = path.join(__dirname, '..', 'data');
+const isVercel = process.env.VERCEL || process.env.NOW_BUILDER;
+const DATA_DIR = isVercel ? '/tmp' : path.join(__dirname, '..', 'data');
+
 if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 }
