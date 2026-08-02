@@ -1,7 +1,8 @@
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const app = require('../server/index.cjs');
+const expressApp = require('../server/index.cjs');
 
 export default function handler(req, res) {
-  app(req, res);
+  const fn = typeof expressApp === 'function' ? expressApp : (expressApp.default || expressApp);
+  fn(req, res);
 }
